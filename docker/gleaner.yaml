@@ -27,16 +27,16 @@ millers:
   graph: true
 sources:
 - name: nsidc
-  url: https://nsidc.org/sitemap.xml
+  url: http://nsidc.org/sitemap.xml
   headless: false
   properName: National Snow and Ice Data Center
-  domain: https://nsidc.org
+  domain: http://nsidc.org
   type: sitemap
-  active: false
+  active: true
 - name: gem
   type: sitemap
-  headless: true
+  headless: false
   url: https://data.g-e-m.dk/sitemap
   properName: Greenland Ecosystem Monitoring Database
   domain: https://data.g-e-m.dk
-  active: true
+  active: false
