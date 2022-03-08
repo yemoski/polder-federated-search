@@ -15,7 +15,7 @@ contextmaps:
   file: "./schemaorg-current-https.jsonld"
 - prefix: "http://schema.org/"
   file: "./schemaorg-current-https.jsonld"
-- prefix: "http://schema.org/"
+- prefix: "http://schema.org"
   file: "./schemaorg-current-https.jsonld"
 summoner:
   after: ""      # "21 May 20 10:00 UTC"   

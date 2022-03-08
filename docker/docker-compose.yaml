@@ -5,7 +5,7 @@ volumes:
 services:
 
   gleaner-setup:
-    image: nein09/gleaner:latest
+    image: nein09/gleaner:dev-latest
     command: -cfg gleaner -setup
     depends_on:
       - triplestore
@@ -51,7 +51,7 @@ services:
     - 'http://triplestore:9999/blazegraph/namespace'
 
   gleaner:
-    image: nein09/gleaner:latest
+    image: nein09/gleaner:dev-latest
     command: -cfg gleaner
     depends_on:
       - triplestore
