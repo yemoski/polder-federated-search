@@ -20,10 +20,6 @@ data:
     contextmaps:
     - prefix: "https://schema.org/"
       file: "./schemaorg-current-https.jsonld"
-    - prefix: "http://schema.org/"
-      file: "./schemaorg-current-https.jsonld"
-    - prefix: "http://schema.org"
-      file: "./schemaorg-current-https.jsonld"
     summoner:
       after: ""
       mode: full  # full || diff:  If diff compare what we have currently in gleaner to sitemap, get only new, delete missing
@@ -53,4 +49,4 @@ data:
       url: http://s3system-svc:{{ .Values.s3system_service.api_port }}/sitemaps/bas-sitemap.xml
       properName: British Antarctic Survey
       active: true
-      domain: http://bas.ac.uk
+      domain: http://localhost
