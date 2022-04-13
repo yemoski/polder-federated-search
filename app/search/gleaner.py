@@ -12,8 +12,7 @@ class GleanerSearch(SearcherBase):
         page_start = max(0, page_number - 1) * GleanerSearch.PAGE_SIZE
 
         return f"""
-            PREFIX sschema: <https://schema.org/>
-            PREFIX schema: <http://schema.org/>
+            PREFIX schema: <https://schema.org/>
 
             SELECT ?total_results ?score ?id ?abstract ?url ?title ?sameAs ?keywords ?temporal_coverage
 
@@ -29,26 +28,12 @@ class GleanerSearch(SearcherBase):
                 (GROUP_CONCAT(DISTINCT ?temporal_coverage ; separator=", ") as ?temporal_coverage)
 
             {{
-              VALUES ?type {{ schema:Dataset sschema:Dataset }}
-              ?s a ?type .
-              {{
-                ?s sschema:name ?title .
-                ?s sschema:keywords ?keywords .
-                ?s sschema:url ?url .
-                ?s sschema:description | sschema:description/sschema:value  ?abstract .
-                ?s sschema:identifier | sschema:identifier/sschema:value ?id .
-                ?s sschema:temporalCoverage ?temporal_coverage .
+                ?s a schema:Dataset  .
 
-                OPTIONAL {{
-                    ?s sschema:sameAs ?sameAs .
-                }}
-              }}
-              UNION
-              {{
                 ?s schema:name ?title .
                 ?s schema:keywords ?keywords .
                 ?s schema:url ?url .
-                ?s schema:description | schema:description/schema:value ?abstract .
+                ?s schema:description | schema:description/schema:value  ?abstract .
                 ?s schema:identifier | schema:identifier/schema:value ?id .
                 ?s schema:temporalCoverage ?temporal_coverage .
 
@@ -56,10 +41,9 @@ class GleanerSearch(SearcherBase):
                     ?s schema:sameAs ?sameAs .
                 }}
 
-              }}
-              FILTER(ISLITERAL(?id)) .
+                FILTER(ISLITERAL(?id)) .
 
-              {user_query}
+                {user_query}
             }}
             GROUP BY ?id ?url ?title
         }} AS %search
